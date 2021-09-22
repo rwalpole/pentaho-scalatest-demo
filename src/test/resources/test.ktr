@@ -448,7 +448,7 @@
     </hop>
     <hop>
       <from>Create Jena Model</from>
-      <to>Dummy (do nothing)</to>
+      <to>Serialize Jena Model</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -476,6 +476,14 @@
       <namespace>
         <prefix>rdfs</prefix>
         <uri>http://www.w3.org/2000/01/rdf-schema#</uri>
+      </namespace>
+      <namespace>
+        <prefix>cat</prefix>
+        <uri>http://cat.nationalarchives.gov.uk/</uri>
+      </namespace>
+      <namespace>
+        <prefix>odrl</prefix>
+        <uri>http://www.w3.org/ns/odrl/2/</uri>
       </namespace>
       <namespace>
         <prefix>xsd</prefix>
@@ -576,31 +584,6 @@
     </GUI>
   </step>
   <step>
-    <name>Dummy (do nothing)</name>
-    <type>Dummy</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>784</xloc>
-      <yloc>304</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Set URI Constants</name>
     <type>Constant</type>
     <description/>
@@ -613,42 +596,6 @@
     </partitioning>
     <fields>
       <field>
-        <name>cat_prefix</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>http://cat.nationalarchives.gov.uk/</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>cat_tna_uri</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>http://cat.nationalarchives.gov.uk/The_National_Archives</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>cat_public_uri</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>http://cat.nationalarchives.gov.uk/The_Public</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
         <name>cat_closed_policy_uri</name>
         <type>String</type>
         <format/>
@@ -656,18 +603,6 @@
         <decimal/>
         <group/>
         <nullif>http://cat.nationalarchives.gov.uk/policy.Closed_or_Retained_Document</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>nat_profile_uri</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>http://www.nationalarchives.gov.uk/odrl-profile</nullif>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -684,186 +619,6 @@
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
       </field>
-      <field>
-        <name>odrl_offer_uri</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>http://www.w3.org/ns/odrl/2/Offer</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>odrl_perm_uri</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>http://www.w3.org/ns/odrl/2/perm</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>odrl_prohibition_uri</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>http://www.w3.org/ns/odrl/2/Prohibition</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>odrl_permission_uri</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>http://www.w3.org/ns/odrl/2/Permission</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>odrl_read_uri</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>http://www.w3.org/ns/odrl/2/read</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>odrl_read_document_uri</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>http://www.w3.org/ns/odrl/2/readDocument</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>odrl_constraint_uri</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>http://www.w3.org/ns/odrl/2/Constraint</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>odrl_datetime_uri</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>http://www.w3.org/ns/odrl/2/dateTime</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>odrl_eq_uri</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>http://www.w3.org/ns/odrl/2/eq</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>odrl_gt_uri</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>http://www.w3.org/ns/odrl/2/gt</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>odrl_gteq_uri</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>http://www.w3.org/ns/odrl/2/gteq</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>odrl_delay_period_uri</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>http://www.w3.org/ns/odrl/2/delayPeriod</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>odrl_logical_constraint_uri</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>http://www.w3.org/ns/odrl/2/LogicalConstraint</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>rdf_list_uri</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>http://www.w3.org/1999/02/22-rdf-syntax-ns#List</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>rdf_nil_uri</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>http://www.w3.org/1999/02/22-rdf-syntax-ns#nil</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -876,6 +631,41 @@
     <GUI>
       <xloc>320</xloc>
       <yloc>176</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Serialize Jena Model</name>
+    <type>JenaSerializerStep</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <jenaModelField closeAndRemove="true">cat_policy_model</jenaModelField>
+    <serializationFormat>TURTLE</serializationFormat>
+    <file>
+      <filename>/home/rkw/Source/GitHub/nationalarchives/pentaho-scalatest-demo/result.ttl</filename>
+      <createParentFolder>true</createParentFolder>
+      <includeStepNr>false</includeStepNr>
+      <includePartitionNr>false</includePartitionNr>
+      <includeDate>false</includeDate>
+      <includeTime>false</includeTime>
+    </file>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>752</xloc>
+      <yloc>416</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
