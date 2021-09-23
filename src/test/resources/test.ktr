@@ -6,8 +6,19 @@
     <extended_description/>
     <trans_version/>
     <trans_type>Normal</trans_type>
+    <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
+      <parameter>
+        <name>output_directory</name>
+        <default_value>/home/rkw/Downloads</default_value>
+        <description/>
+      </parameter>
+      <parameter>
+        <name>result_filename</name>
+        <default_value>result.ttl</default_value>
+        <description/>
+      </parameter>
     </parameters>
     <log>
       <trans-log-table>
@@ -584,6 +595,41 @@
     </GUI>
   </step>
   <step>
+    <name>Serialize Jena Model</name>
+    <type>JenaSerializerStep</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <jenaModelField closeAndRemove="true">cat_policy_model</jenaModelField>
+    <serializationFormat>TURTLE</serializationFormat>
+    <file>
+      <filename>${output_directory}/${result_filename}</filename>
+      <createParentFolder>true</createParentFolder>
+      <includeStepNr>false</includeStepNr>
+      <includePartitionNr>false</includePartitionNr>
+      <includeDate>false</includeDate>
+      <includeTime>false</includeTime>
+    </file>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>752</xloc>
+      <yloc>416</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Set URI Constants</name>
     <type>Constant</type>
     <description/>
@@ -631,41 +677,6 @@
     <GUI>
       <xloc>320</xloc>
       <yloc>176</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Serialize Jena Model</name>
-    <type>JenaSerializerStep</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <jenaModelField closeAndRemove="true">cat_policy_model</jenaModelField>
-    <serializationFormat>TURTLE</serializationFormat>
-    <file>
-      <filename>/home/rkw/Source/GitHub/nationalarchives/pentaho-scalatest-demo/result.ttl</filename>
-      <createParentFolder>true</createParentFolder>
-      <includeStepNr>false</includeStepNr>
-      <includePartitionNr>false</includePartitionNr>
-      <includeDate>false</includeDate>
-      <includeTime>false</includeTime>
-    </file>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>752</xloc>
-      <yloc>416</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

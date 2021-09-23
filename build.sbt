@@ -1,3 +1,5 @@
+import com.lucidchart.sbt.scalafmt.ScalafmtCorePlugin.autoImport._
+
 name := "pentaho-scalatest-demo"
 
 version := "0.1"
@@ -15,9 +17,10 @@ libraryDependencies += "pentaho-kettle"         % "kettle-core"           % pent
 libraryDependencies += "pentaho-kettle"         % "kettle-engine"         % pentahoVersion
 libraryDependencies += "org.apache.jena"        % "apache-jena-libs"      % "3.17.0"
 libraryDependencies += "org.pentaho.di.plugins" % "pdi-core-plugins-impl" % pentahoVersion
-libraryDependencies += "pentaho-kettle"         % "kettle-engine"         % pentahoVersion  % "test" classifier "tests"
-libraryDependencies += "pentaho-kettle"         % "kettle-core"           % pentahoVersion  % "test" classifier "tests"
-libraryDependencies += "org.scalatest"          %% "scalatest"            % "3.2.9"         % "test"
+libraryDependencies += "pentaho-kettle"         % "kettle-engine"         % pentahoVersion % "test" classifier "tests"
+libraryDependencies += "pentaho-kettle"         % "kettle-core"           % pentahoVersion % "test" classifier "tests"
+libraryDependencies += "org.scalatest"          %% "scalatest"            % "3.2.9" % "test"
 
+Compile / run / fork := true
 
-
+scalafmtOnCompile := true
