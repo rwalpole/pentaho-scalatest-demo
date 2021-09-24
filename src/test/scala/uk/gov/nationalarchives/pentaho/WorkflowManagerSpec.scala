@@ -15,7 +15,7 @@ class WorkflowManagerSpec extends AnyWordSpec with Matchers {
       val params = Some(
         Map(
           "output_directory" -> outputDirectory,
-          "result_filename" -> resultFilename
+          "result_filename"  -> resultFilename
         )
       )
       WorkflowManager.runWorkflow(
