@@ -8,6 +8,11 @@
     <trans_type>Normal</trans_type>
     <directory>/</directory>
     <parameters>
+      <parameter>
+        <name>output_file</name>
+        <default_value>/tmp/result.ttl</default_value>
+        <description>Output Directory</description>
+      </parameter>
     </parameters>
     <log>
       <trans-log-table>
@@ -648,8 +653,8 @@
     <jenaModelField closeAndRemove="true">cat_policy_model</jenaModelField>
     <serializationFormat>TURTLE</serializationFormat>
     <file>
-      <filename>/home/rkw/Source/GitHub/nationalarchives/pentaho-scalatest-demo/result.ttl</filename>
-      <createParentFolder>true</createParentFolder>
+      <filename>${output_file}</filename>
+      <createParentFolder>false</createParentFolder>
       <includeStepNr>false</includeStepNr>
       <includePartitionNr>false</includePartitionNr>
       <includeDate>false</includeDate>
