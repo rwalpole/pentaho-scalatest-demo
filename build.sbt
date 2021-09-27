@@ -12,13 +12,17 @@ val pentahoVersion = "9.1.0.0-324"
 
 resolvers +=
   "PentahoNexus" at "https://nexus.pentaho.org/content/groups/omni"
+resolvers += Resolver.mavenLocal
 
 libraryDependencies += "pentaho-kettle"         % "kettle-core"           % pentahoVersion
 libraryDependencies += "pentaho-kettle"         % "kettle-engine"         % pentahoVersion
 libraryDependencies += "org.apache.jena"        % "apache-jena-libs"      % "3.17.0"
 libraryDependencies += "org.pentaho.di.plugins" % "pdi-core-plugins-impl" % pentahoVersion
 libraryDependencies += "org.slf4j"              % "slf4j-simple"          % "1.7.32"
-libraryDependencies += "com.h2database"         % "h2"                    % "1.4.200" //% Test
+
+libraryDependencies += "com.h2database"              % "h2"                  % "1.4.200" //% Test
+libraryDependencies += "uk.gov.nationalarchives.pdi" % "kettle-jena-plugins" % "2.2.0-SNAPSHOT" //% "test"
+
 //libraryDependencies += "com.h2database" % "h2"            % "1.4.200" % Test
 libraryDependencies += "pentaho-kettle" % "kettle-engine" % pentahoVersion % "test" classifier "tests"
 libraryDependencies += "pentaho-kettle" % "kettle-core"   % pentahoVersion % "test" classifier "tests"
