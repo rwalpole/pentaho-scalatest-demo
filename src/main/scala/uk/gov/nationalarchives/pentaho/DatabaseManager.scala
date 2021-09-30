@@ -32,8 +32,9 @@ case class DatabaseManager() {
 }
 object DatabaseManager {
   val PARENT_DIR: String = "/home/rkw/Source/GitHub/nationalarchives/pentaho-scalatest-demo/data-dir"
-  val DATABASE_NAME: String = "ildb-test-db" // it's better if you write db name in small letters
+  val DATABASE_NAME: String = "ildb-test" // it's better if you write db name in small letters
   val DATABASE_DIR: String = s"$PARENT_DIR/$DATABASE_NAME" // FYI, this is string interpolation
-  val DATABASE_URL: String = s"jdbc:h2:$DATABASE_DIR;database_to_upper=false"
+  //  val DATABASE_URL: String = s"jdbc:h2:mem:ildb-test"
+  val DATABASE_URL: String = s"jdbc:h2:$DATABASE_DIR;database_to_upper=false;mode=MSSQLServer"
   val DATABASE_DRIVER_CLASS: String = "org.h2.Driver"
 }

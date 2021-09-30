@@ -1,6 +1,7 @@
 package uk.gov.nationalarchives.pentaho
 
 import org.pentaho.di.core.KettleEnvironment
+import org.pentaho.di.core.compress.{ CompressionPluginType, NoneCompressionProvider }
 import org.pentaho.di.core.plugins.{ PluginTypeInterface, StepPluginType }
 import org.pentaho.di.trans.step.StepMetaInterface
 import org.pentaho.di.trans.{ Trans, TransMeta }
@@ -16,11 +17,14 @@ object WorkflowManager {
     parameters: Map[String, String]): Unit = {
     // register custom step plugins
     val stepPluginType = StepPluginType.getInstance()
+    val compressionPluginType = CompressionPluginType.getInstance()
+    compressionPluginType
+      .registerCustom(classOf[NoneCompressionProvider], "compression", "COMPRESSION", "Compression", "", null)
     val stepRegister = registerStepPlugin(stepPluginType) _
     for (plugin <- plugins) {
       stepRegister(plugin)
     }
-    val pluginTypes: List[PluginTypeInterface] = List(stepPluginType)
+    val pluginTypes: List[PluginTypeInterface] = List(stepPluginType, compressionPluginType)
 
     // init the environment with plugins
     KettleEnvironment.init(pluginTypes.asJava, true)
